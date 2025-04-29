@@ -1,3 +1,5 @@
+#Solution 1
+
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
@@ -13,6 +15,29 @@ public:
             }
 
             pairs.insert({nums[i], i});
+        }
+
+        return false;
+    }
+};
+
+===================================
+
+#Solution 2
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        
+        unordered_set<int> numSet;
+
+        for (int n : nums) {
+
+            if (numSet.find(n) != numSet.end()) {
+                return true;
+            }
+
+            numSet.insert(n);
         }
 
         return false;
