@@ -12,7 +12,7 @@ public:
                 return true;
             }
 
-            pairs.insert{{nums[i], i}};
+            pairs.insert({nums[i], i});
         }
 
         return false;
