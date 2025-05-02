@@ -2,16 +2,15 @@
 
 using namespace std;
 
+//Solved using sliding window technique
+
+//Initial sum of the first K elements
 int sumFirst(int arr[], int k) {
-    
     int sum = 0;
-    
     for (int i = 0; i < k; i++) {
         sum += arr[i];
     }
-    
     return sum;
-    
 }
 
 int main() {
@@ -23,12 +22,12 @@ int main() {
     int initSum = sumFirst(arr, k);
     int curr = initSum;
     int best = initSum;
-    
+
+
+//Sliding Window Technique
     for (int i = k; i < arrSize; i++) {
-        
         curr = curr + arr[i] - arr[i-k];
         best = max(curr, best);
-        
     }
     
     cout << best << endl;
