@@ -2,8 +2,6 @@
 
 using namespace std;
 
-//Solved using sliding window technique
-
 //Initial sum of the first K elements
 int sumFirst(int* arr, int k) {
     int sum = 0;
