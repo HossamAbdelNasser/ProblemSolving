@@ -1,0 +1,60 @@
+#include <iostream>
+
+using namespace std;
+
+struct node {
+  int data;
+  node* left;
+  node* right;
+};
+
+node* getNewNode(int n){
+    node* newNode = new node();
+    newNode->data = n;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
+
+node* insert(node* root, int n) {
+    
+    if (root == NULL) {
+        root = getNewNode(n);
+    }
+    else if (n <= root->data) {
+        root->left = insert(root->left, n);
+    } else {
+        root->right = insert(root->right, n);
+    }
+    return root;
+}
+
+void print(node* root) {
+    
+    if (root) {
+    
+    cout << root->data << endl;
+    print(root->left);
+        print(root->right);
+
+    }
+        
+}
+
+
+int main() {
+    node* root = NULL;
+    
+    root = insert(root, 15);
+    root = insert(root, 10);
+    root = insert(root, 20);
+    root = insert(root, 25);
+    root = insert(root, 8);
+    root = insert(root, 12);
+    
+    
+    print(root);
+    
+    
+    return 0;
+}
