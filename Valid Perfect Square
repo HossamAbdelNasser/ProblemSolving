@@ -1,0 +1,40 @@
+#include <iostream>
+
+using namespace std;
+
+int squareNum(int n) {
+    return n * n;
+}
+
+bool perfectSqr(int n) {
+    
+    int l = 0;
+    int h = n;
+    int m;
+    
+    while (l <= h) {
+        
+        m = (l+h)/2;
+
+        if (n == squareNum(m)) return true;
+        
+        else if (n > squareNum(m)) {
+            l = m+1;
+        }
+        
+        else {
+            h = m-1;
+        }
+        
+    }
+    
+    return false;
+}
+
+
+int main() {
+    
+    cout << perfectSqr(9) << endl;
+
+    return 0;
+}
