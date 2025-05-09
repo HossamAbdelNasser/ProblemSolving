@@ -11,8 +11,7 @@ struct node {
 node* getNewNode(int n){
     node* newNode = new node();
     newNode->data = n;
-    newNode->left = NULL;
-    newNode->right = NULL;
+    newNode->left = newNode->right = NULL;
     return newNode;
 }
 
