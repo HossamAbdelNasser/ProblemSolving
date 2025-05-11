@@ -50,16 +50,37 @@ bool searchTree(node* root, int n) {
     return false;
 }
 
-void delNode(node* root, int n) {
+node* delNode(node* curRoot, int n) {
     
-     if (root) {
-         
-        if (root->data == n) {}
-    
-        else if (root->data >= n) return delNode(root->left, n);
-        else return delNode(root->right, n);
+    node *temp = new node();
         
+     if (curRoot) {
+         
+        if (curRoot->data == n) {
+            
+            if (curRoot->left == NULL && curRoot->right == NULL){
+                
+                curRoot = NULL;
+         }
+            
+          else if (curRoot->right) {
+              node* temp = curRoot;
+              curRoot = curRoot->right;
+              delete temp;
+
+        }
+            else {
+              node* temp = curRoot;
+              curRoot = curRoot->left;
+              delete temp;
+            }
+        }
+        
+        else if (curRoot->data >= n) return delNode(curRoot->left, n);
+        else return delNode(curRoot->right, n);
      }
+     
+     return curRoot;
 }
 
 int main() {
@@ -72,10 +93,9 @@ int main() {
     root = insert(root, 8);
     root = insert(root, 12);
     
+    delNode(root, 8);
+    
     print(root);
-    
-    //cout << searchTree(root, 12) << endl;
-    
     
     return 0;
 }
