@@ -56,8 +56,8 @@ void delNode(node* root, int n) {
          
         if (root->data == n) {}
     
-        else if (root->data >= n) return searchTree(root->left, n);
-        else return searchTree(root->right, n);
+        else if (root->data >= n) return delNode(root->left, n);
+        else return delNode(root->right, n);
         
      }
 }
