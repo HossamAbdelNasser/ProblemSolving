@@ -59,21 +59,19 @@ node* delNode(node* root, int n) {
         
         if (root->data == n) {
             
-              if (root->left == NULL && root->right == NULL){
+              if (!root->left && !root->right){
                
                root = NULL;
          }
             
           else if (root->right == NULL) {
              
-             root->data = root->left->data;
-             root->left = delNode(root->left, root->data);
+             root = root->left;
         }
         
         else if (root->left == NULL) {
             
-             root->data = root->right->data;
-             root->right = delNode(root->right, root->data);
+            root = root->right;
         }
         
             else {
@@ -100,8 +98,7 @@ int main() {
     root = insert(root, 8);
     root = insert(root, 12);
     
-    
-    delNode(root, 12);
+    delNode(root, 8);
     
     print(root);
     
