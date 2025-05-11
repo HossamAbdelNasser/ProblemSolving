@@ -35,11 +35,21 @@ void print(node* root) {
     cout << root->data << endl;
     print(root->left);
         print(root->right);
-
     }
-        
 }
 
+bool searchTree(node* root, int n) {
+    
+    if (root) {
+    
+        if (root->data == n) {return true;}
+    
+        else if (root->data >= n) return searchTree(root->left, n);
+        else return searchTree(root->right, n);
+    }
+
+    return false;
+}
 
 int main() {
     node* root = NULL;
@@ -51,8 +61,9 @@ int main() {
     root = insert(root, 8);
     root = insert(root, 12);
     
+    //print(root);
     
-    print(root);
+    cout << searchTree(root, 12) << endl;
     
     
     return 0;
