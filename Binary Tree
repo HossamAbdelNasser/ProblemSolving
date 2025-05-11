@@ -39,9 +39,8 @@ void print(node* root) {
 }
 
 bool searchTree(node* root, int n) {
-    
+
     if (root) {
-    
         if (root->data == n) {return true;}
     
         else if (root->data >= n) return searchTree(root->left, n);
@@ -49,6 +48,18 @@ bool searchTree(node* root, int n) {
     }
 
     return false;
+}
+
+void delNode(node* root, int n) {
+    
+     if (root) {
+         
+        if (root->data == n) {}
+    
+        else if (root->data >= n) return searchTree(root->left, n);
+        else return searchTree(root->right, n);
+        
+     }
 }
 
 int main() {
@@ -61,9 +72,9 @@ int main() {
     root = insert(root, 8);
     root = insert(root, 12);
     
-    //print(root);
+    print(root);
     
-    cout << searchTree(root, 12) << endl;
+    //cout << searchTree(root, 12) << endl;
     
     
     return 0;
