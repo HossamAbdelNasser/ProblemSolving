@@ -11,7 +11,7 @@ struct node {
 node* getNewNode(int n){
     node* newNode = new node();
     newNode->data = n;
-    newNode->left = newNode->right = NULL;
+    newNode->left = newNode->right = nullptr;
     return newNode;
 }
 
@@ -34,7 +34,7 @@ void print(node* root) {
     
     cout << root->data << endl;
     print(root->left);
-        print(root->right);
+    print(root->right);
     }
 }
 
@@ -52,22 +52,32 @@ bool searchTree(node* root, int n) {
 
 node* delNode(node* root, int n) {
     
+    if (root == NULL) return root;
+    
     if (root) {
         
         if (root->data == n) {
-               if (!root->left && !root->right){
-                delete root;
-                root = NULL;
+            
+              if (root->left == NULL && root->right == NULL){
+                
+               
+                root = root->left = root->right = NULL;
+               
+                
          }
             
           else if (root->right == NULL) {
              
-             root = root->left;
+             root->data = root->left->data;
+             root->left = delNode(root->left, root->data);
         }
         
         else if (root->left == NULL) {
-             root = root->right;
+            
+             root->data = root->right->data;
+             root->right = delNode(root->right, root->data);
         }
+        
             else {
                 root->data = root->right->data;
                 root->right = delNode(root->right, root->data);
@@ -92,7 +102,8 @@ int main() {
     root = insert(root, 8);
     root = insert(root, 12);
     
-    delNode(root, 10);
+    
+    delNode(root, 20);
     
     print(root);
     
