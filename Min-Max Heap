@@ -1,0 +1,37 @@
+#include <iostream>
+
+using namespace std;
+
+int getLeftIndex(int n){
+    return 2 * n + 1;
+}
+
+int getRightIndex(int n){
+    return 2 * n + 2;
+}
+
+int getParent(int n){
+    return (n-1)/2;
+}
+
+void swap(int& i, int& j) {
+    int temp = i;
+    i = j;
+    j = temp;
+}
+
+int main() {
+    
+    int heap[] = {10,30,15,100,50,75,90}; 
+    
+   // cout << heap[getLeftIndex(1)] << endl;
+   // cout << heap[getRightIndex(1)] << endl;
+   // cout << heap[getParent(1)] << endl;
+   
+    swap(heap[0], heap[1]);
+    
+    cout << heap[0] << endl;
+
+
+    return 0;
+}
