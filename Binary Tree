@@ -77,6 +77,7 @@ node* delNode(node* root, int n) {
      return root;
 }
 
+//Height of the tree
 int maxDepth(node* root) {
     
     if (!root) return 0;
@@ -87,6 +88,7 @@ int maxDepth(node* root) {
     return 1 + max(left, right);
 }
 
+//Difference in height between left and right subtrees
 int heightDiff(node* root) {
   
     int left = maxDepth(root->left);
@@ -95,10 +97,10 @@ int heightDiff(node* root) {
    return left - right;
 }
 
+//Print the tree
 void print(node* root) {
     
     if (root) {
-    
     cout << root->data << endl;
     print(root->left);
     print(root->right);
