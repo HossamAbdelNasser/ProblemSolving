@@ -28,16 +28,6 @@ node* insert(node* root, int n) {
     return root;
 }
 
-void print(node* root) {
-    
-    if (root) {
-    
-    cout << root->data << endl;
-    print(root->left);
-    print(root->right);
-    }
-}
-
 bool searchTree(node* root, int n) {
 
     if (root) {
@@ -85,6 +75,34 @@ node* delNode(node* root, int n) {
     }
         
      return root;
+}
+
+int maxDepth(node* root) {
+    
+    if (!root) return 0;
+    
+    int left = maxDepth(root->left);
+    int right = maxDepth(root->right);
+    
+    return 1 + max(left, right);
+}
+
+int heightDiff(node* root) {
+  
+    int left = maxDepth(root->left);
+    int right = maxDepth(root->right);
+    
+   return left - right;
+}
+
+void print(node* root) {
+    
+    if (root) {
+    
+    cout << root->data << endl;
+    print(root->left);
+    print(root->right);
+    }
 }
 
 int main() {
