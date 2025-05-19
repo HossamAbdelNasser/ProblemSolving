@@ -109,7 +109,6 @@ void print(node* root) {
 }
 
 //Print the tree in hierarchical order
-
 void printLevelOrder(node* root) {
     if (!root) return;
     
