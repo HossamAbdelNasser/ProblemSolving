@@ -154,7 +154,7 @@ int main() {
     
     delNode(root, 8);
     
-    print(root);
+    printLevelOrder(root);
     
     return 0;
 }
