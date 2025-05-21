@@ -24,18 +24,16 @@ int main() {
     return 0;
 }
 
-//Bottom-up approach (Tabulation)
+//Bottom-up approach
 int fib(int n){
     
-    int memo[10];
+    int memo[20];
     int result = 0;
     
-    for (int i = 1; i <= n+1; i++) {
+    for (int i = 1; i <= n; i++) {
         
-        if (i <= 2) { result = 1;}
-        else {result = memo[i-1] + memo[i-2];}
-    
-        memo[i] = result;
+        if (i <= 2) memo[i] = 1;
+       else memo[i] = memo[i-1] + memo[i-2];
     }
     return memo[n];
 }
