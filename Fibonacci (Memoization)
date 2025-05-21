@@ -4,6 +4,7 @@ using namespace std;
 
 int memo[10];
 
+//Memoization (Top Down)
 int fib(int n){
     
     //Check if n was computed before, given that an empty array cell gives 0
@@ -21,4 +22,20 @@ int main() {
     cout << fib(10) << endl;
 
     return 0;
+}
+
+//Bottom-up approach (Tabulation)
+int fib(int n){
+    
+    int memo[10];
+    int result = 0;
+    
+    for (int i = 1; i <= n+1; i++) {
+        
+        if (i <= 2) { result = 1;}
+        else {result = memo[i-1] + memo[i-2];}
+    
+        memo[i] = result;
+    }
+    return memo[n];
 }
