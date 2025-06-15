@@ -58,4 +58,16 @@ public:
 
         return true;
     }
+
+  ~Trie() {
+        freeMemory(root);
+    }
+
+private:
+    void freeMemory(TrieNode* node) {
+        for (auto& pair : node->children)
+            freeMemory(pair.second);
+        delete node;
+    }
+
 };
