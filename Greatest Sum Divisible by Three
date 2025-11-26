@@ -1,0 +1,43 @@
+//Difficulty: medium
+
+class Solution {
+public:
+    int maxSumDivThree(vector<int>& nums) {
+        
+        int TotalSum = 0;
+
+        int smallest_one = 9999;
+        int smallest_two = 9999;
+
+        for (int n : nums) {
+
+            TotalSum += n;
+
+            if (n % 3 == 1) {
+                
+                smallest_two = min(smallest_two, n + smallest_one);
+                smallest_one = min(smallest_one, n);
+            }
+
+             if (n % 3 == 2) {
+                smallest_one = min(smallest_one, n + smallest_two);
+                smallest_two = min(smallest_two, n);
+            }
+
+        }
+
+        if (TotalSum % 3 == 0) {
+            return TotalSum;
+        }
+
+         if (TotalSum % 3 == 1) {
+            return TotalSum - smallest_one;
+        }
+
+         if (TotalSum % 3 == 2) {
+            return TotalSum - smallest_two;
+        }
+
+        return 0;
+    }
+};
