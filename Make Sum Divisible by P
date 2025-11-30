@@ -1,0 +1,42 @@
+class Solution {
+public:
+    int minSubarray(vector<int>& nums, int p) {
+    
+        long long sum = accumulate(nums.begin(), nums.end(), 0LL);
+        int rem = sum % p;
+
+        if (rem == 0) return 0;
+
+        long long res = nums.size();
+        long long curr_sum = 0;
+        int index = 0;
+        long long prefix = 0;
+        long long length = 0;
+
+        unordered_map<int, int> rem_to_idx;
+        rem_to_idx[0] = -1;
+        
+        for (long long n : nums) {
+            curr_sum = (curr_sum + n) % p;
+            prefix = (curr_sum - rem + p) % p;
+            
+            auto itr = rem_to_idx.find(prefix);
+
+            if ( itr != rem_to_idx.end()){
+                length = index - rem_to_idx[prefix];
+                res = min(res, length);
+            }
+
+            rem_to_idx[curr_sum] = index;
+        
+            index++;
+        }
+
+        if (res == nums.size()) {
+            return -1;
+        } else {
+            return res;
+        }
+        
+    }
+};
