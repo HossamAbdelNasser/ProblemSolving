@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int maxNumberOfBalloons(string text) {
+
+        map<char, int> np;
+
+            for (char c : text) {
+                np[c] += 1;
+            }
+
+            int b = np['b'];
+            int a = np['a'];
+            int l = np['l']/2;
+            int o = np['o']/2;
+            int n = np['n'];
+
+            return min({b,a,l,o,n});
+    }
+};
