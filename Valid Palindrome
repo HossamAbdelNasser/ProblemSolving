@@ -1,0 +1,42 @@
+class Solution {
+
+private:
+
+string alphnumlower(string str) {
+
+    string res = "";
+
+    for (char c : str) {
+
+        if (c >='A' && c <= 'Z' || c >='a' && c <= 'z' || c >='0' && c <= '9' ) {
+
+            if (c >='A' && c <= 'Z') {
+            c = c + 32;
+            res.push_back(c); 
+            } else {
+            res.push_back(c);
+            }
+        }
+    }
+
+    return res;
+}
+
+public:
+    bool isPalindrome(string s) {
+
+    string str = alphnumlower(s);
+
+    int n = str.length() - 1;
+
+    for (int i = 0; i < str.length()/2; i++) {
+
+        if (str[i] != str[n - i]) {
+            return false;
+        }
+    }
+
+        return true;
+    }
+    
+};
