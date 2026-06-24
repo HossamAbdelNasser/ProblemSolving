@@ -1,9 +1,8 @@
 class Solution {
 public:
     string reverseVowels(string s) {
-        set <char> vowels = {'A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u'};
 
-    string res = s;
+    set <char> vowels = {'A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u'};
     int n = s.length() - 1; 
     int l = 0, h = n;
 
@@ -12,20 +11,16 @@ public:
         auto it1 = vowels.find(s[l]);
         auto it2 = vowels.find(s[h]);
 
-        if (it1 != vowels.end() && it2 != vowels.end()) {
-            swap(res[l], res[h]);
+        if (it1 == vowels.end()) {
+            l++;
+        } else if (it2 == vowels.end()) {
+            h--;
+        } else {
+            swap(s[l], s[h]);
              h--;
              l++;
-        } else if (it1 != vowels.end() && it2 == vowels.end()) {
-            h--;
-        } else if (it1 == vowels.end() && it2 != vowels.end()) {
-            l++;
-        } else {
-            h--;
-            l++;
         }
     }
-
-    return res;
+    return s;
     }
 };
