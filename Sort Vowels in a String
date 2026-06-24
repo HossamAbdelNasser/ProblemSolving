@@ -1,0 +1,34 @@
+class Solution {
+public:
+    string sortVowels(string s) {
+        set <char> vowels = {'A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u'};
+
+    string vowelsSort = "";
+    string res = "";
+    int i = 0;
+
+    for (char c : s) {
+        auto it = vowels.find(c);
+
+        if (it != vowels.end()) {
+            vowelsSort.push_back(c);
+        } 
+    }
+
+    sort(vowelsSort.begin(), vowelsSort.end());
+
+    for (char c : s) {
+
+        auto it = vowels.find(c);
+        if (it != vowels.end()) {
+            c = vowelsSort[i];
+            res.push_back(c);
+            i++;
+        } else {
+            res.push_back(c);
+        }
+    }
+
+    return res;
+    }
+};
