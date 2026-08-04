@@ -1,0 +1,34 @@
+class Solution {
+public:
+    vector<int> findMissingElements(vector<int>& nums) {
+
+        int n = nums.size() - 1;
+        set<int> s;
+        int temp;
+        vector<int> res;
+
+
+        sort(nums.begin(), nums.end());
+
+        for (int x : nums){
+            s.insert(x);
+        }
+
+        int range = nums[n] - nums[0];
+
+        for (int i = 1; i < range; i++){
+
+            temp = nums[0] + i;
+
+            auto it = s.find(temp);
+
+            if (it != s.end()) {
+            } else {
+                res.push_back(temp);
+            }
+        }
+
+
+        return res;
+    }
+};
