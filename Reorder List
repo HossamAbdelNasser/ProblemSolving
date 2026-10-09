@@ -48,7 +48,21 @@ public:
         second->next = tmp1;
         first = tmp1;
         second = tmp2;
-
         }
     }
 };
+
+==================================
+
+//Solution using vector
+
+vector <ListNode*> nodes;
+         ListNode* current = head;
+         
+         while (current != NULL) {
+            nodes.push_back(current);
+            current = current->next;
+         }
+
+         int l = 0;
+         int r = nodes.size() - 1;
